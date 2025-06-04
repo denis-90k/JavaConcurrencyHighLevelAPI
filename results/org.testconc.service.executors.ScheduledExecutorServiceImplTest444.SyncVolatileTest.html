@@ -1,0 +1,1124 @@
+
+<html>
+<head>
+<title>Java Concurrency Stress test report</title>
+ <style type="text/css">
+   * { font-family: Arial; }
+   table { font-size: 9pt; }
+   a { color: #000000; }
+   .progress { padding: 0px; }
+   .header { text-align: left; }
+   .section1 { font-size: 12pt; background-color: #BDB76B; color: #000000; font-weight: bold;}
+   .section2 { font-size: 12pt; background-color: #F0E68C; color: #000000; font-weight: bold;}
+   .cell1 { background-color: #FAFAD2; }
+   .cell2 { background-color: #EEE8AA; }
+   .passedProgress { background-color: #00AA00; color: #FFFFFF; text-align: center; font-weight: bold; }
+   .failedProgress { background-color: #FF0000; color: #FFFFFF; text-align: center; font-weight: bold; }
+   .passed { color: #00AA00; text-align: center; font-weight: bold; }
+   .failed { color: #FF0000; text-align: center; font-weight: bold; }
+   .interesting { color: #0000FF; text-align: center; font-weight: bold; }
+   .spec { color: #AAAA00; text-align: center; font-weight: bold; }
+   .endResult { font-size: 48pt; text-align: center; font-weight: bold; }
+ </style>
+</head>
+<body>
+<h1>org.testconc.service.executors.scheduledexecutorservice.ScheduledExecutorServiceImplTest4.SyncVolatileTest</h1>
+<h3>Description and references</h3>
+<p>null</p>
+<h3>Environment</h3>
+<table>
+<tr>
+<td nowrap>java.specification.name</td>
+<td nowrap>Java Platform API Specification</td>
+</tr>
+<tr>
+<td nowrap>java.specification.vendor</td>
+<td nowrap>Oracle Corporation</td>
+</tr>
+<tr>
+<td nowrap>java.specification.version</td>
+<td nowrap>21</td>
+</tr>
+<tr>
+<td nowrap>java.vendor</td>
+<td nowrap>Oracle Corporation</td>
+</tr>
+<tr>
+<td nowrap>java.version</td>
+<td nowrap>21.0.6</td>
+</tr>
+<tr>
+<td nowrap>java.vm.name</td>
+<td nowrap>Java HotSpot(TM) 64-Bit Server VM</td>
+</tr>
+<tr>
+<td nowrap>java.vm.vendor</td>
+<td nowrap>Oracle Corporation</td>
+</tr>
+<tr>
+<td nowrap>java.vm.version</td>
+<td nowrap>21.0.6+8-LTS-188</td>
+</tr>
+<tr>
+<td nowrap>os.arch</td>
+<td nowrap>amd64</td>
+</tr>
+<tr>
+<td nowrap>os.name</td>
+<td nowrap>Linux</td>
+</tr>
+<tr>
+<td nowrap>os.version</td>
+<td nowrap>6.11.0-25-generic</td>
+</tr>
+</table>
+<h3>Results</h3>
+<table cellpadding=5 border=1>
+<tr>
+<th>Compilation Mode</th>
+<th>Scheduling Class</th>
+<th>Java Options</th>
+<th>Status</th>
+<th colspan=2>Observed States</th>
+</tr>
+<tr>
+<th colspan=4></th>
+<th nowrap align='center'>1, 2</th>
+<th nowrap align='center'>2, 1</th>
+</tr>
+<tr>
+<td colspan=4></td>
+<td>Acceptable</td>
+<td>Acceptable</td>
+</tr>
+<tr>
+<td colspan=4></td>
+<td>actor1 incremented, then actor2.</td>
+<td>actor2 incremented, then actor1.</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>14815408</td>
+<td align='right' width='50.0%' bgColor=#00ff00>14151523</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>16999280</td>
+<td align='right' width='50.0%' bgColor=#00ff00>15664291</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1250704</td>
+<td align='right' width='50.0%' bgColor=#00ff00>9929347</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>35012703</td>
+<td align='right' width='50.0%' bgColor=#00ff00>15335348</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>55552196</td>
+<td align='right' width='50.0%' bgColor=#00ff00>315215</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1126666214]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>42333117</td>
+<td align='right' width='50.0%' bgColor=#00ff00>334934</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1303720815]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>18644805</td>
+<td align='right' width='50.0%' bgColor=#00ff00>215246</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1606846226]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>39542282</td>
+<td align='right' width='50.0%' bgColor=#00ff00>340489</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=2083254802]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>31549082</td>
+<td align='right' width='50.0%' bgColor=#00ff00>285049</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=286712111]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>55375423</td>
+<td align='right' width='50.0%' bgColor=#00ff00>440788</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>102960673</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1249778</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1021898621]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>82444846</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1613285</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1328695422]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>88768760</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1238811</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=203185915]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>85530817</td>
+<td align='right' width='50.0%' bgColor=#00ff00>2531154</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=318488975]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>83015190</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1892861</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: Interpreter
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=397924449]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>89502903</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1661788</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>8905425</td>
+<td align='right' width='50.0%' bgColor=#00ff00>3298626</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>16032475</td>
+<td align='right' width='50.0%' bgColor=#00ff00>23143736</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>7670035</td>
+<td align='right' width='50.0%' bgColor=#00ff00>7186176</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>18920406</td>
+<td align='right' width='50.0%' bgColor=#00ff00>19057725</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>155255485</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1445206</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1598968657]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>119106565</td>
+<td align='right' width='50.0%' bgColor=#00ff00>975886</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1633593139]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>67913905</td>
+<td align='right' width='50.0%' bgColor=#00ff00>753506</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1910031007]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>83423801</td>
+<td align='right' width='50.0%' bgColor=#00ff00>849370</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=84469437]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>54591853</td>
+<td align='right' width='50.0%' bgColor=#00ff00>579238</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=941048628]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>78725563</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1052248</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>192478395</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1465176</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1211563666]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>182998736</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1534275</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1374060934]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>173341845</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1627006</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=581713371]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>170386493</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1622998</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=595273189]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>179535205</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1649326</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C1
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=82667952]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>173086857</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1912714</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>484339</td>
+<td align='right' width='50.0%' bgColor=#00ff00>44098592</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1747047038]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>413080</td>
+<td align='right' width='50.0%' bgColor=#00ff00>28523131</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=457379781]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>448734</td>
+<td align='right' width='50.0%' bgColor=#00ff00>36075317</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=697957328]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>450798</td>
+<td align='right' width='50.0%' bgColor=#00ff00>47787813</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=830307282]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>407037</td>
+<td align='right' width='50.0%' bgColor=#00ff00>39434774</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=906111217]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>484625</td>
+<td align='right' width='50.0%' bgColor=#00ff00>40524546</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1108391</td>
+<td align='right' width='50.0%' bgColor=#00ff00>96855660</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1102669154]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1493818</td>
+<td align='right' width='50.0%' bgColor=#00ff00>89507033</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1200250147]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>2118413</td>
+<td align='right' width='50.0%' bgColor=#00ff00>85114118</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1325427691]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1189002</td>
+<td align='right' width='50.0%' bgColor=#00ff00>91358089</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1379620509]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>2215513</td>
+<td align='right' width='50.0%' bgColor=#00ff00>84515258</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: Interpreter
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=990233131]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1641598</td>
+<td align='right' width='50.0%' bgColor=#00ff00>83348373</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1446044</td>
+<td align='right' width='50.0%' bgColor=#00ff00>140130167</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1304699505]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1312117</td>
+<td align='right' width='50.0%' bgColor=#00ff00>100461214</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1575013015]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1324660</td>
+<td align='right' width='50.0%' bgColor=#00ff00>82098591</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=300120037]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1244308</td>
+<td align='right' width='50.0%' bgColor=#00ff00>57193343</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=542918310]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1983103</td>
+<td align='right' width='50.0%' bgColor=#00ff00>161240468</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=856674446]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1046612</td>
+<td align='right' width='50.0%' bgColor=#00ff00>60104639</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1848499</td>
+<td align='right' width='50.0%' bgColor=#00ff00>204229472</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1331574883]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1927640</td>
+<td align='right' width='50.0%' bgColor=#00ff00>178785851</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=2003213856]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1797982</td>
+<td align='right' width='50.0%' bgColor=#00ff00>179663029</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=2084048615]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1900237</td>
+<td align='right' width='50.0%' bgColor=#00ff00>160842054</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=471426253]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1876891</td>
+<td align='right' width='50.0%' bgColor=#00ff00>187950200</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C1
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=861465843]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>1870236</td>
+<td align='right' width='50.0%' bgColor=#00ff00>188898935</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>31934502</td>
+<td align='right' width='50.0%' bgColor=#00ff00>31039469</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1111996925]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>21026776</td>
+<td align='right' width='50.0%' bgColor=#00ff00>20146235</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1307165755]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>15984368</td>
+<td align='right' width='50.0%' bgColor=#00ff00>15173923</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=212659107]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>26503124</td>
+<td align='right' width='50.0%' bgColor=#00ff00>29866047</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=654305463]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>8876966</td>
+<td align='right' width='50.0%' bgColor=#00ff00>8559725</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 0
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=970298768]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>15472700</td>
+<td align='right' width='50.0%' bgColor=#00ff00>14518231</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>51642434</td>
+<td align='right' width='50.0%' bgColor=#00ff00>50407377</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1168554778]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>62058343</td>
+<td align='right' width='50.0%' bgColor=#00ff00>64178348</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1686247804]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>61516992</td>
+<td align='right' width='50.0%' bgColor=#00ff00>62927699</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1840951480]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>51262178</td>
+<td align='right' width='50.0%' bgColor=#00ff00>50101553</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=1977237959]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>61948212</td>
+<td align='right' width='50.0%' bgColor=#00ff00>61503199</td>
+</tr>
+<tr>
+<td nowrap valign=top width=10><pre>split
+    actor1: C2
+    actor2: C2
+</pre></td>
+<td nowrap valign=top width=10><pre>    actor1: package group 0, core group 0
+    actor2: package group 0, core group 1
+</pre></td>
+<td        valign=top width=10>
+<pre>[-javaagent:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/lib/idea_rt.jar=46057:/home/denis/Documents/2024.3Ultimate/ideaIU-2024.3/idea-IU-243.21565.193/bin, -Dfile.encoding=UTF-8, -Dsun.stdout.encoding=UTF-8, -Dsun.stderr.encoding=UTF-8, -XX:+StressLCM, -XX:+StressGCM, -XX:+StressIGVN, -XX:+StressCCP, -XX:StressSeed=480912045]</pre>
+</td>
+<td align='center' bgColor='green '>OK</td>
+<td align='right' width='50.0%' bgColor=#00ff00>55667207</td>
+<td align='right' width='50.0%' bgColor=#00ff00>55701004</td>
+</tr>
+</table>
+<h3>Messages</h3>
+<h3>VM Output Streams</h3>
+<h3>VM Error Streams</h3>
+</body>
+</html>
