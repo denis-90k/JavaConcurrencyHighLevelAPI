@@ -14,6 +14,13 @@ import static org.junit.Assert.*;
 
 public class ForkJoinPoolTest {
 
+    /*
+    *
+    * Worker will steal only in FIFO, but poll of local tasks depends on asyncMode flag.
+    * false = LIFO
+    * true = FIFO
+    *
+    * */
     @Test
     public void testForkJoinPool_asyncMode_false() throws InterruptedException {
         ForkJoinPool fjp = new ForkJoinPool(1, ForkJoinPool.defaultForkJoinWorkerThreadFactory, null,
@@ -22,15 +29,17 @@ public class ForkJoinPoolTest {
 
         List<String> elems = new ArrayList<>();
 
-        CountDownLatch cdl = new CountDownLatch(10);
+        CountDownLatch cdl = new CountDownLatch(20);
         fjp.execute(ForkJoinTask.adapt(new Runnable() {
             @Override
             public void run() {
+                System.out.println("Outer task thread: " + Thread.currentThread().getName());
                 for (int t = 0; t < 10; t++) {
                     final int taskNumber = t;
                     fjp.execute(new Runnable() {
                         @Override
                         public void run() {
+                            System.out.println("Inner task thread: " + Thread.currentThread().getName());
                             elems.add(String.valueOf(taskNumber));
                             cdl.countDown();
                         }
@@ -39,9 +48,10 @@ public class ForkJoinPoolTest {
 
             }
         }).fork());
+
         cdl.await();
 
-        Assert.assertEquals("9876543210", String.join("", elems));
+        Assert.assertEquals("98765432100123456789", String.join("", elems));
     }
 
     @Test
@@ -53,7 +63,7 @@ public class ForkJoinPoolTest {
 
         List<String> elems = new ArrayList<>();
 
-        CountDownLatch cdl = new CountDownLatch(10);
+        CountDownLatch cdl = new CountDownLatch(20);
         fjp.execute(ForkJoinTask.adapt(new Runnable() {
             @Override
             public void run() {
@@ -72,7 +82,7 @@ public class ForkJoinPoolTest {
         }).fork());
         cdl.await();
 
-        Assert.assertEquals("0123456789", String.join("", elems));
+        Assert.assertEquals("01234567890123456789", String.join("", elems));
     }
 
     @Test
@@ -268,6 +278,10 @@ public class ForkJoinPoolTest {
         fjp.invoke(task);
     }
 
+    /*
+    * When looking at this test case, it has to be compared to the next one 'testForkJoinPool_WithoutManagedBlocker_ResponseTime'
+    * It is because there is significant dofference in time consumed to finish same tasks.
+    * */
     @Test
     public void testForkJoinPool_ManagedBlocker_ResponseTime() throws InterruptedException {
         int maximumPoolSize = 64;

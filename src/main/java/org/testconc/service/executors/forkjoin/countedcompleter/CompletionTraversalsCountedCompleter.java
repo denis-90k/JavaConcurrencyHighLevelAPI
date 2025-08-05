@@ -39,9 +39,9 @@ public class CompletionTraversalsCountedCompleter extends CountedCompleter<List<
         if (h > l)
             result = mapper.map(array[lo]);
         // process completions by reducing along and advancing subtask links
-        for (CountedCompleter<?> c = firstComplete(); c != null; c = c. nextComplete()) {
+        for (CountedCompleter<?> c = firstComplete(); c != null; c = c.nextComplete()) {
             for (CompletionTraversalsCountedCompleter t = (CompletionTraversalsCountedCompleter)c, s = t.forks; s != null; s = t.forks = s.next)
-                t. result = reducer.reduce(mapper.groupWords(t.result, s.result));
+                t.result = reducer.reduce(mapper.groupWords(t.result, s.result));
         }
     }
 

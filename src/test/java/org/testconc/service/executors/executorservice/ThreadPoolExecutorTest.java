@@ -51,7 +51,7 @@ public class ThreadPoolExecutorTest {
 
         cdl.await();
 
-        assertTrue(true);
+//        assertTrue(true);
     }
 
     @Test
