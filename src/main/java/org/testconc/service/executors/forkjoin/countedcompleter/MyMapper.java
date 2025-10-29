@@ -7,6 +7,8 @@ import java.util.Map;
 
 public class MyMapper {
 
+    public String dummyString = "HELLO"; // for ThreadTest::test_ClassLoader
+
     public List<WordMap> map(String v) {
         List<WordMap> mappings = new ArrayList<>();
         for (String w : v.split(" ")) {

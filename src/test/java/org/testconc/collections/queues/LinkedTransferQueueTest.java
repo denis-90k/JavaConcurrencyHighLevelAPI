@@ -77,7 +77,7 @@ public class LinkedTransferQueueTest {
         CountDownLatch cdl = new CountDownLatch(2);
         new Thread(() -> {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(5000);
                 ltq.transfer("Msg1");
                 System.out.println("Thread 1 transfered Msg");
                 cdl.countDown();
